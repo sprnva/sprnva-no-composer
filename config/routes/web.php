@@ -18,3 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', ['WelcomeController@home', ['auth']]);
+
+Route::controller(['CrudController', ['auth']], function () {
+    Route::get('/crud', 'index');
+    Route::post('/crud_add', 'store');
+    Route::get('/crud_edit/{id}', 'edit');
+    Route::post('/crud_update', 'update');
+    Route::post('/crud_delete', 'deleteItem');
+});

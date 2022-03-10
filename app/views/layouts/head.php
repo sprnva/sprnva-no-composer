@@ -2,6 +2,7 @@
 
 use App\Core\App;
 use App\Core\Auth;
+use App\Core\Storage;
 ?>
 <html lang="en">
 
@@ -38,6 +39,21 @@ use App\Core\Auth;
 			margin-bottom: 1rem;
 			border-radius: .5rem !important;
 		}
+
+		.table td,
+		.table th {
+			padding: 0.45rem;
+		}
+
+		.table th {
+			background-color: #eaecf0;
+		}
+
+		.table tr,
+		.table th,
+		.table td {
+			border: 1px solid #a2a9b1;
+		}
 	</style>
 
 	<script src="<?= public_url('/assets/sprnva/js/jquery-3.6.0.min.js') ?>"></script>
@@ -72,11 +88,15 @@ use App\Core\Auth;
 					<li class="nav-item">
 						<a class="nav-link" href="<?= route('/home') ?>">Home</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= route('/crud') ?>">Example Crud Operation</a>
+					</li>
 				</ul>
 
 				<ul class="navbar-nav flex-row ml-md-auto">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img src="<?= Storage::getAvatar(Auth::user('id')); ?>" alt="sprnva-logo" style="width: 30px; height: 30px;object-fit: cover;border-radius: 50%;">
 							<?= Auth::user('fullname') ?>
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
